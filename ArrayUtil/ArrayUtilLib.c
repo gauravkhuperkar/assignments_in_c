@@ -1,5 +1,7 @@
 #include "ArrayUtilLib.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 ArrayUtil create(int typeSize, int length) {
 	ArrayUtil array_util;
@@ -24,4 +26,21 @@ ArrayUtil resize(ArrayUtil util, int length) {
 	util.base = realloc(util.base,length);
 	util.length = length;
 	return util;
+};
+
+int findIndex(ArrayUtil util, void* element) {
+	char *ele = util.base;
+	for (int i = 0; i < util.length; i++) 
+		if(memcmp(ele + (i * util.typeSize), element ,util.typeSize) == 0)
+			return i;
+	return -1;
+}
+
+void my_print(ArrayUtil util) {
+	int i = 0;
+	char *ele = util.base;
+	while(i < util.length*util.typeSize) {
+		printf("%d\n", ele[i]);
+		i++;
+	};
 };
