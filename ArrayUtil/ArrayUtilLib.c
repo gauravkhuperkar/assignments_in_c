@@ -44,3 +44,8 @@ void my_print(ArrayUtil util) {
 		i++;
 	};
 };
+
+void dispose(ArrayUtil util) {
+	util.base = realloc(util.base,0);
+	util.length = 0;
+}

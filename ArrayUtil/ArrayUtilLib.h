@@ -13,3 +13,5 @@ ArrayUtil resize(ArrayUtil util, int length);
 int findIndex(ArrayUtil util, void* element);
 
 void my_print(ArrayUtil util);
+
+void dispose(ArrayUtil util);
