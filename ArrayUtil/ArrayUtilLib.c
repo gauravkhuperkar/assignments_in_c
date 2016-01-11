@@ -48,4 +48,21 @@ void my_print(ArrayUtil util) {
 void dispose(ArrayUtil util) {
 	util.base = realloc(util.base,0);
 	util.length = 0;
-}
+};
+
+int isMatch(void* hint, void* item) {
+	int first = *(int *)hint;
+	int second = *(int *)item;
+	if(first == second)
+		return 1;
+	return 0;
+};
+
+void* findFirst(ArrayUtil util, MatchFunc* match, void* hint) {
+	void *element = util.base;
+	for (int i = 0; i < util.length; ++i)	{
+		if(match(hint, element+(i*util.typeSize)))
+			return element;	
+	};
+	return NULL;
+};
