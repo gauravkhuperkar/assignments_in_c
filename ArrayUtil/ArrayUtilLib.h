@@ -23,3 +23,5 @@ int isMatch(void* ,void*);
 void* findFirst(ArrayUtil util, MatchFunc* match, void* hint);
 
 void* findLast(ArrayUtil util, MatchFunc* match, void* hint);
+
+int count(ArrayUtil util, MatchFunc* match, void* hint);

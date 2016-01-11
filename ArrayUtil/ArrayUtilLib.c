@@ -76,3 +76,13 @@ void* findLast(ArrayUtil util, MatchFunc* match, void* hint) {
 	};
 	return NULL;
 };
+
+int count(ArrayUtil util, MatchFunc* match, void* hint) {
+	void *element = util.base;
+	int count = 0;
+	for (int i = 0; i < util.length; ++i)	{
+		if(match(hint, element+(i*util.typeSize)))
+			count++;	
+	};
+	return count;
+};
