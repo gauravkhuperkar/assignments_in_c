@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "ArrayUtilLib.h"
 #include <string.h>
+#include <stdlib.h>
 
 int main() {
 	int a = 2;
@@ -14,9 +15,10 @@ int main() {
 	void *p = findLast(array_util_1, &isMatch, &a);
 	int s = count(array_util_1, &isMatch, &a);
 	int t = count(array_util_1, &isMatch, &d);
+	int g = filter(array_util_2, &isMatch, &a, &array_util_1, 4);
 	dispose(array_util_1);
 	printf("index is %d\n", index);
-	printf("priviously length %d.....after length %d\n",array_util_1.length,array_util_2.length);
+	printf("priviously length %d.....after length %d.........%d\n",array_util_1.length,array_util_2.length,g);
 	int x = isMatch(&a, &b);
 	int y = isMatch(&a, &c);
 	printf("should 1 : %d............ should 0 : %d.. should 0 and is : %d.... should 4 and is : %d\n",x,y,s,t);

@@ -18,7 +18,7 @@ int areEqual(ArrayUtil a, ArrayUtil b) {
 		for (int i = 0; i < a.length*a.typeSize; i++)
 			if (ele1[i]!=ele2[i]) return 0;
 		return 1;
-	}
+	}	
 	else return 0;
 };
 
@@ -86,3 +86,17 @@ int count(ArrayUtil util, MatchFunc* match, void* hint) {
 	};
 	return count;
 };
+
+int filter(ArrayUtil util, MatchFunc* match, void* hint, void** destination, int maxItems) {
+	char *pointer;
+	int count = 0;
+	void *element = util.base;
+	void *filtered = destination;
+	for (int i = 0; i < util.length; ++i) {
+		if(match(hint, element+(i*util.typeSize)) && count <= maxItems) {
+			memcpy((element+(i*util.typeSize)), (filtered + count), util.typeSize);	
+			count++;
+		};
+	};
+	return count;	
+}
