@@ -25,3 +25,28 @@ void test_for_findIndex() {
 	assert(index_1 == -1);
 	assert(index_2 == 0);
 };
+
+void test_for_findFirst() {
+	ArrayUtil array_util = create(4,5);
+	int a = 213;
+	void *frist = findFirst(array_util, &isMatch, &a);
+	assert(frist == NULL);
+};
+
+void test_for_findLast() {
+	ArrayUtil array_util = create(4,5);
+	int a = 41;
+	void *last = findLast(array_util, &isMatch, &a);
+	assert(last == NULL);
+};
+
+void test_for_filter() {
+	ArrayUtil array_util_1 = create(4,5);
+	ArrayUtil array_util_2 = create(4,5);
+	int a = 0;
+	int b = 12;
+	int noOfMatches_1 = filter(array_util_1, &isMatch, &a, array_util_2.base, 4);
+	int noOfMatches_2 = filter(array_util_1, &isMatch, &b, array_util_2.base, 4);
+	assert(noOfMatches_1 == 5);
+	assert(noOfMatches_2 == 0);
+};

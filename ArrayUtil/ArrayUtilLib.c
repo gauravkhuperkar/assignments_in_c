@@ -67,7 +67,6 @@ void* findFirst(ArrayUtil util, MatchFunc* match, void* hint) {
 	return NULL;
 };
 
-
 void* findLast(ArrayUtil util, MatchFunc* match, void* hint) {
 	void *element = util.base;
 	for (int i = util.length; i < 0; i--)	{
@@ -99,4 +98,4 @@ int filter(ArrayUtil util, MatchFunc* match, void* hint, void** destination, int
 		};
 	};
 	return count;	
-}
+};
