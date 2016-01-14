@@ -28,16 +28,31 @@ void test_for_findIndex() {
 
 void test_for_findFirst() {
 	ArrayUtil array_util = create(4,5);
-	int a = 213;
-	void *frist = findFirst(array_util, &isMatch, &a);
-	assert(frist == NULL);
+	int num = 21;
+	int *array = ( int *)array_util.base;
+	array[0] = 21;
+	array[1] = 37;
+	array[2] = 401;
+	array[3] = 21;
+	array[4] = 81;
+	int *frist = (int *)findFirst(array_util, &isMatch, &num);
+	assert(*frist == 21);
 };
 
 void test_for_findLast() {
 	ArrayUtil array_util = create(4,5);
-	int a = 41;
-	void *last = findLast(array_util, &isMatch, &a);
-	assert(last == NULL);
+	int num1 = 17;
+	int num2 = 21;
+	int *array = ( int *)array_util.base;
+	array[0] = 21;
+	array[1] = 37;
+	array[2] = 401;
+	array[3] = 21;
+	array[4] = 81;
+	int *last1 = findLast(array_util, &isMatch, &num1);
+	int *last2 = findLast(array_util, &isMatch, &num2);
+	assert(last1 == NULL);
+	assert(*last2 == 21);
 };
 
 void test_for_filter() {
@@ -49,4 +64,24 @@ void test_for_filter() {
 	int noOfMatches_2 = filter(array_util_1, &isMatch, &b, array_util_2.base, 4);
 	assert(noOfMatches_1 == 5);
 	assert(noOfMatches_2 == 0);
+};
+
+void test_for_map() {
+	ArrayUtil array_util_1 = create(4,5);
+	ArrayUtil array_util_2 = create(4,5);
+	int num = 21;
+	int *array_1 = ( int *)array_util_1.base;
+	int *array_2 = ( int *)array_util_2.base;
+	array_1[0] = 3;
+	array_1[1] = 8;
+	array_1[2] = 40;
+	array_1[3] = 21;
+	array_1[4] = 32;
+	map(array_util_1, array_util_2, &square, &num);
+	assert(array_1[0] == 3);
+	assert(array_2[0] == 9);
+	assert(array_2[1] == 64);
+	assert(array_2[2] == 1600);
+	assert(array_2[3] == 441);
+	assert(array_2[4] == 1024);
 };
