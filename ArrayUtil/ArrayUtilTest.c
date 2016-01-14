@@ -85,3 +85,20 @@ void test_for_map() {
 	assert(array_2[3] == 441);
 	assert(array_2[4] == 1024);
 };
+
+void test_for_forEach() {
+	int number = 2;
+	ArrayUtil array_util = create(4,5);
+	int *array = (int *)array_util.base;
+	array[0] = 3;
+	array[1] = 8;
+	array[2] = 40;
+	array[3] = 21;
+	array[4] = 32;
+	forEach(array_util, &addNumber, &number);
+	assert(array[0] == 5);
+	assert(array[1] == 10);
+	assert(array[2] == 42);
+	assert(array[3] == 23);
+	assert(array[4] == 34);
+};

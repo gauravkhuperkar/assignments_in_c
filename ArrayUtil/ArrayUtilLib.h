@@ -33,3 +33,9 @@ typedef void ConvertFunc(void* hint, void* sourceItem, void* destinationItem);
 void square(void* hint, void* sourceItem, void* destinationItem);
 
 void map(ArrayUtil source, ArrayUtil destination, ConvertFunc* convert, void* hint);
+
+typedef void OperationFunc(void* hint, void* item);
+
+void addNumber(void* hint, void* item);
+
+void forEach(ArrayUtil util, OperationFunc* operation, void* hint);

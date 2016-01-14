@@ -113,3 +113,16 @@ void map(ArrayUtil source, ArrayUtil destination, ConvertFunc* convert, void* hi
 		destination.base+=destination.typeSize;
 	};
 };
+
+void addNumber(void* hint, void* item) {
+	int num = *(int *)hint;
+	int *pointer = (int *)item;
+	*pointer+=num;
+};
+
+void forEach(ArrayUtil util, OperationFunc* operation, void* hint) {
+	for (int i = 0; i < util.length; ++i) {
+		operation(hint, util.base);
+		util.base+=util.typeSize;
+	};
+};
