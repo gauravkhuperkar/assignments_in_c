@@ -102,3 +102,14 @@ void test_for_forEach() {
 	assert(array[3] == 23);
 	assert(array[4] == 34);
 };
+
+void test_for_reduce() {
+	int number = 2;
+	ArrayUtil array_util = create(4,5);
+	int *array = (int *)array_util.base;
+	array[0] = 3;
+	array[1] = 8;
+	array[2] = 4;
+	array[3] = 21;
+	array[4] = 32;
+};

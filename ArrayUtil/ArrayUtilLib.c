@@ -126,3 +126,22 @@ void forEach(ArrayUtil util, OperationFunc* operation, void* hint) {
 		util.base+=util.typeSize;
 	};
 };
+
+void reduceInSum (void* hint, void* previousItem, void* item) {
+	int priv = *(int *)previousItem;
+	int *current = (int *)item;
+	*current+=priv;
+};
+
+void* reduce(ArrayUtil util, ReducerFunc* reducer, void* hint, void* intialValue) {
+	for (int i = 0; i < util.length; ++i) {
+		if(!i)
+			reducer(hint, intialValue, util.base);
+ 	 	else
+			reducer(hint, (util.base - util.typeSize), util.base);
+		util.base+=util.typeSize;
+	};
+	int a = *(int *)util.base-4;
+	printf("%p.............%d\n", util.base,a);
+	return util.base;
+};
