@@ -34,19 +34,24 @@ void test_for_get_first_element() {
 
 void test_for_get_last_element() {
 	LinkedList list  = createList();
+
 	int element_1 = 12;
 	int element_2 = 13;
+
 	add_to_list(&list, &element_1);
 	add_to_list(&list, &element_2);
+
 	void *pointer = get_last_element(list);
 	assert(*(int *)(pointer) == element_2);
 };
 
 void test_for_getElementAt() {
 	LinkedList list  = createList();
+
 	int element_1 = 12;
 	int element_2 = 13;
 	int element_3 = 23;
+
 	add_to_list(&list, &element_1);
 	add_to_list(&list, &element_2);
 	add_to_list(&list, &element_3);
@@ -60,4 +65,18 @@ void test_for_getElementAt() {
 	assert(*(int *)(ele_2) == element_2);
 	assert(*(int *)(ele_3) == element_1);
 	assert(*(int *)(ele_4) == element_3);
+};
+
+void test_for_inndexOf() {
+	LinkedList list = createList();
+
+	int element_1 = 12;
+	int element_2 = 13;
+	int element_3 = 24;
+
+	add_to_list(&list, &element_1);
+	add_to_list(&list, &element_2);
+	add_to_list(&list, &element_3);
+	int index = indexOf(list, &element_2);
+	assert(index == 1);
 };

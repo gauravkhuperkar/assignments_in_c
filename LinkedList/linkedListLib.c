@@ -51,3 +51,11 @@ void *getElementAt(LinkedList list, int index) {
 	return p->value;
 };
 
+int indexOf(LinkedList list, void *element) {
+	Element *p = list.first;
+	for (int i = 0; i < list.length; ++i) {
+		if(p->value == element) return i;
+		p = p->next;
+	};
+	return -1;
+};
