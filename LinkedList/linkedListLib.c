@@ -25,11 +25,11 @@ int add_to_list(LinkedList *list, void *element) {
 };
 
 void *get_first_element(LinkedList list) {
-	return list.first;
+	return list.first->value;
 };
 
 void *get_last_element(LinkedList list) {
-	return list.last;
+	return list.last->value;
 };
 
 void forEach(LinkedList list, ElementProcessor e) {
@@ -41,3 +41,13 @@ void forEach(LinkedList list, ElementProcessor e) {
 void increment(void *pointer) {
 	pointer++;
 };
+
+void *getElementAt(LinkedList list, int index) {
+	if(index >= list.length) return NULL;
+	Element *p = list.first;
+	for (int i = 0; i < index; ++i) {
+		p = p->next;
+	};
+	return p->value;
+};
+

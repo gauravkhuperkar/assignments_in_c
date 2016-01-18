@@ -24,22 +24,40 @@ void test_for_add_to_list() {
 
 void test_for_get_first_element() {
 	LinkedList list  = createList();
-	Element *element_1 = (Element *)malloc(sizeof(Element));
-	Element *element_2 = (Element *)malloc(sizeof(Element));
-	add_to_list(&list, element_1);
-	add_to_list(&list, element_2);
+	int element_1 = 12;
+	int element_2 = 13;
+	add_to_list(&list, &element_1);
+	add_to_list(&list, &element_2);
 	void *pointer = get_first_element(list);
-	printf(">>>>>>>>>>>>>>>> pointer is : %p & element is : %p", pointer,element_1);
-	assert(pointer == element_1);
+	assert(*(int *)(pointer) == element_1);
 };
 
 void test_for_get_last_element() {
 	LinkedList list  = createList();
-	Element *element_1 = (Element *)malloc(sizeof(Element));
-	Element *element_2 = (Element *)malloc(sizeof(Element));
-	add_to_list(&list, element_1);
-	add_to_list(&list, element_2);
+	int element_1 = 12;
+	int element_2 = 13;
+	add_to_list(&list, &element_1);
+	add_to_list(&list, &element_2);
 	void *pointer = get_last_element(list);
-	printf(">>>>>>>>>>>>>>>> pointer is : %p & element is : %p", pointer,element_1);
-	assert(pointer == element_2);
+	assert(*(int *)(pointer) == element_2);
+};
+
+void test_for_getElementAt() {
+	LinkedList list  = createList();
+	int element_1 = 12;
+	int element_2 = 13;
+	int element_3 = 23;
+	add_to_list(&list, &element_1);
+	add_to_list(&list, &element_2);
+	add_to_list(&list, &element_3);
+
+	void *ele_1 = getElementAt(list, 5);
+	void *ele_2 = getElementAt(list, 1);
+	void *ele_3 = getElementAt(list, 0);
+	void *ele_4 = getElementAt(list, 2);
+
+	assert(ele_1 == NULL);
+	assert(*(int *)(ele_2) == element_2);
+	assert(*(int *)(ele_3) == element_1);
+	assert(*(int *)(ele_4) == element_3);
 };
