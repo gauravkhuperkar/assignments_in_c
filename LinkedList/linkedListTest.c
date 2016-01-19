@@ -67,7 +67,25 @@ void test_for_getElementAt() {
 	assert(*(int *)(ele_4) == element_3);
 };
 
-void test_for_inndexOf() {
+void test_for_indexOf() {
+	LinkedList list = createList();
+
+	int element_1 = 12;
+	int element_2 = 13;
+	int element_3 = 24;
+	int element_4 = 17;
+
+	add_to_list(&list, &element_1);
+	add_to_list(&list, &element_2);
+	add_to_list(&list, &element_3);
+
+	int index_1 = indexOf(list, &element_2);
+	int index_2 = indexOf(list, &element_4);
+	assert(index_1 == 1);
+	assert(index_2 == -1);
+};
+
+void test_for_deleteElementAt() {
 	LinkedList list = createList();
 
 	int element_1 = 12;
@@ -77,6 +95,8 @@ void test_for_inndexOf() {
 	add_to_list(&list, &element_1);
 	add_to_list(&list, &element_2);
 	add_to_list(&list, &element_3);
-	int index = indexOf(list, &element_2);
-	assert(index == 1);
+
+	void *nextpointer = deleteElementAt(&list, 1);
+	printf("%d\n........", *(int *)nextpointer);
+	assert(*(int *)nextpointer == element_3);
 };
