@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "linkedListLib.h"
 
 LinkedList createList(void) {
@@ -71,15 +72,28 @@ void *deleteElementAt(LinkedList *list, int index) {
 		p->next = p->next->next;
 		p = p->next;
 		free(p->next);
+		list->length--;
 	}else if(index != 0){
 		for (int i = 0; i < index-1; ++i)
 			p = p->next;
 		p->next = p->next->next;
 		p = p->next;
 		free(p->next);
+		list->length--;
 	}else if (index == 0){
 		list->first = list->first->next;
 		free(p->next);
+		list->length--;
 	};
 	return p->value;
+};
+
+int asArray(LinkedList list, void **destination, int maxElements) {
+	Element *element = list.first;
+	int count = (list.length < maxElements) ? list.length : maxElements;
+	for (int i = 0; i < count; ++i)	{
+		memcpy((element->value), (destination + i), sizeof(element->value));
+		element = element->next;
+	};
+	return count;
 };

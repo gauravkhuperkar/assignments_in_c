@@ -30,3 +30,15 @@ void *getElementAt(LinkedList, int );
 int indexOf(LinkedList, void *);
 
 void *deleteElementAt(LinkedList *, int);
+
+int asArray(LinkedList, void **, int maxElements);
+
+LinkedList reverse(LinkedList);
+
+typedef void ConvertFunc(void* hint, void* sourceItem, void* destinationItem);
+
+LinkedList map(LinkedList, ConvertFunc, void * );
+
+typedef void* Reducer(void* hint, void* previousItem, void* item);
+
+LinkedList reduce(LinkedList, Reducer, void *hint, void *initialValue);

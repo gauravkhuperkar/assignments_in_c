@@ -96,7 +96,11 @@ void test_for_deleteElementAt() {
 	add_to_list(&list, &element_2);
 	add_to_list(&list, &element_3);
 
+	assert(list.length == 3);
+
 	void *nextpointer = deleteElementAt(&list, 1);
-	printf("%d\n........", *(int *)nextpointer);
 	assert(*(int *)nextpointer == element_3);
+	assert(list.length == 2);
 };
+
+
