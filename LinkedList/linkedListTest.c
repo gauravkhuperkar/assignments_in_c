@@ -102,5 +102,3 @@ void test_for_deleteElementAt() {
 	assert(*(int *)nextpointer == element_3);
 	assert(list.length == 2);
 };
-
-

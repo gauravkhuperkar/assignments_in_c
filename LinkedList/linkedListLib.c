@@ -97,3 +97,35 @@ int asArray(LinkedList list, void **destination, int maxElements) {
 	};
 	return count;
 };
+
+
+LinkedList reverse(LinkedList list) {
+	LinkedList reversed  = createList();
+	reversed.first = list.last;
+	reversed.last = list.last;
+	Element *ele = reversed.first; 
+	for (int i = 0; i < list.length-1; ++i) {
+		Element *e =   list.first;
+		for (int j = 0; j < list.length - i; ++j) {
+			e = e->next;
+		};
+		ele->next = e;
+	};
+	return reversed;
+};
+
+void addGivenNumber(void* hint, void* sourceItem, void* destinationItem) {
+	*(int *)(destinationItem) = *((int *)(hint) + *(int *)(sourceItem));
+};
+
+LinkedList map(LinkedList list, ConvertFunc addGivenNumber, void * number) {
+	LinkedList maped= createList();
+	Element *element_1 = list.first;
+	Element *element_2 = maped.first;
+	for (int i = 0; i < list.length; ++i) {
+		addGivenNumber(number, element_1, element_2);
+		element_1 = element_1->next;
+		element_2 = element_2->next;
+	};
+	return maped;
+};

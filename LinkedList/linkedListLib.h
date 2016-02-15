@@ -37,6 +37,8 @@ LinkedList reverse(LinkedList);
 
 typedef void ConvertFunc(void* hint, void* sourceItem, void* destinationItem);
 
+void addGivenNumber(void* hint, void* sourceItem, void* destinationItem);
+
 LinkedList map(LinkedList, ConvertFunc, void * );
 
 typedef void* Reducer(void* hint, void* previousItem, void* item);
